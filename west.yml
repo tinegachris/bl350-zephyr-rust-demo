@@ -1,0 +1,31 @@
+# Standalone west manifest for the demo.
+#
+#   west init -l .      (from the repository root)
+#   west update
+#
+# The BL350 board definition is in MAINLINE Zephyr -- boards/bliiot/am62x_m4_bl350,
+# merged as zephyrproject-rtos/zephyr#113302 -- so there is no fork here and no
+# BOARD_ROOT. The first upstream revision carrying it is 88860c15c647.
+#
+# Pinned to a main SHA rather than a release tag because the board landed after
+# v4.4; re-pin to the first release tag that contains it once one ships.
+manifest:
+  self:
+    path: .
+
+  remotes:
+    - name: upstream
+      url-base: https://github.com/zephyrproject-rtos
+
+  projects:
+    - name: zephyr
+      remote: upstream
+      revision: ca0da250b5b1c53e117d7754ba65b726d850c4ba
+      path: zephyr
+      import:
+        # Minimal module set for am62x_m4_bl350/am6254/m4.
+        name-allowlist:
+          - cmsis_6
+          - open-amp
+          - libmetal
+          - hal_ti

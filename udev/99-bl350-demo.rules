@@ -1,0 +1,19 @@
+# BL350 IPC demo: bind the M4F's rpmsg channel and give it a stable name.
+#
+# The firmware announces a name-service channel called "bl350-demo". It appears
+# on the rpmsg bus as `virtioN.bl350-demo.-1.<addr>` carrying the M4F's endpoint
+# address, but with NO DRIVER BOUND: the in-kernel rpmsg_chrdev driver only
+# auto-binds channels literally named "rpmsg_chrdev". Without the explicit bind
+# below there is no /dev node and nothing on Linux can reach the coprocessor.
+#
+# Device numbering is not deterministic -- the R5F registers rpmsg devices too --
+# so never hard-code /dev/rpmsg0. The second rule provides the stable path.
+
+# 1. Channel bus device -> bind rpmsg_chrdev, which creates the endpoint.
+ACTION=="add", SUBSYSTEM=="rpmsg", KERNEL=="virtio*.bl350-demo.*", \
+    ATTR{driver_override}="rpmsg_chrdev", \
+    RUN+="/bin/sh -c 'echo %k > /sys/bus/rpmsg/drivers/rpmsg_chrdev/bind'"
+
+# 2. Resulting chardev endpoint -> stable symlink.
+ACTION=="add", SUBSYSTEM=="rpmsg", KERNEL=="rpmsg[0-9]*", ATTR{name}=="bl350-demo", \
+    SYMLINK+="rpmsg_bl350_demo"

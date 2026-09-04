@@ -1,0 +1,13 @@
+# Zephyr build output
+build/
+
+# Rust build output. out/ holds the cross-compiled aarch64 binary that
+# scripts/stage.sh copies to the board; rebuild it with the command in
+# README.md rather than committing it.
+a53/ipc-hello-rs/target/
+a53/ipc-hello-rs/out/
+
+# west workspace, if you create one here
+/.west/
+/zephyr/
+/modules/

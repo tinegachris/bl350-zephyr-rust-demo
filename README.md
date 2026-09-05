@@ -1,5 +1,16 @@
 # Zephyr ↔ Rust on one chip: an IPC demo for the BLIIoT ARMxy BL350
 
+[![GitHub License](https://img.shields.io/github/license/tinegachris/bl350-zephyr-rust-demo.svg)](https://github.com/tinegachris/bl350-zephyr-rust-demo/blob/main/LICENSE)
+[![GitHub Contributors](https://img.shields.io/github/contributors/tinegachris/bl350-zephyr-rust-demo.svg)](https://github.com/tinegachris/bl350-zephyr-rust-demo/graphs/contributors)
+[![GitHub Issues](https://img.shields.io/github/issues/tinegachris/bl350-zephyr-rust-demo.svg)](https://github.com/tinegachris/bl350-zephyr-rust-demo/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/tinegachris/bl350-zephyr-rust-demo.svg)](https://github.com/tinegachris/bl350-zephyr-rust-demo/pulls)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![GitHub Stars](https://img.shields.io/github/stars/tinegachris/bl350-zephyr-rust-demo.svg?style=social&label=Star)](https://github.com/tinegachris/bl350-zephyr-rust-demo/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/tinegachris/bl350-zephyr-rust-demo.svg?style=social&label=Fork)](https://github.com/tinegachris/bl350-zephyr-rust-demo/network/members)
+[![GitHub Watchers](https://img.shields.io/github/watchers/tinegachris/bl350-zephyr-rust-demo.svg?style=social&label=Watch)](https://github.com/tinegachris/bl350-zephyr-rust-demo/watchers)
+
+![Hello IPC: Zephyr and Rust on the BL350](docs/Nairobi-LUG-Sept-2026/Hello-IPC-Zephyr-Rust-LUG-Nairobi-Sept-2026.png)
+
 Two processors, one piece of silicon, talking to each other.
 
 The TI AM62x on the BL350 has four Cortex-A53 cores running Linux and one
@@ -10,6 +21,9 @@ RPMsg.
 The board target used here, `am62x_m4_bl350`, is in **mainline Zephyr**
 ([zephyrproject-rtos/zephyr#113302](https://github.com/zephyrproject-rtos/zephyr/pull/113302)).
 There is no fork here and no `BOARD_ROOT`.
+
+Presented at the Linux/GNU User Group of Nairobi, September 2026.
+Slides: [Hello IPC: Zephyr and Rust on the BL350](docs/Nairobi-LUG-Sept-2026/Hello-IPC-Nairobi-LUG-Sept-2026-slides.pdf).
 
 ```
      Cortex-A53 ×4                            Cortex-M4F
